@@ -49,7 +49,7 @@ export function renderHistoryList() {
       return `<article class="history-per-day">
       <p class="history-date">2021년 12월 1일</p>
     ${detail
-      .map(({ description, category, amount, fundsAtTheTime, createAt }) => {
+      .map(({ description, category, amount, fundsAtTheTime, createAt, id }) => {
         const fomattedTime = new Date(createAt).toLocaleTimeString('ko-kr', {
           timeStyle: 'short',
           hourCycle: 'h24',
@@ -66,8 +66,8 @@ export function renderHistoryList() {
                 <p>${amount.toLocaleString()}<span>원</span></p>
               </div>
             </div>
-            <div class='delete-section'>
-              <button class='delete-button'>🗑</button>
+            <div class='delete-section' >
+              <button class='delete-button'data-dateid=${dateId} data-itemid=${id} >🗑</button>
             </div>
           </section>
           <section class='history-item-caption'>
