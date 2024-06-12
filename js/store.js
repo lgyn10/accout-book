@@ -56,7 +56,7 @@ export function addNewHistory(newHistory) {
     //! store의 detailList 새로 갱신
     if (store.detailList[store.todayId]) {
       // 해당 날짜에 내역이 존재하는 경우
-      store.detailList[todayId].push(newHistory);
+      store.detailList[store.todayId].push(newHistory);
     } else {
       // 해당 날에 첫 내역인 경우
       store.detailList[store.todayId] = [newHistory];
