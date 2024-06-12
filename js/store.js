@@ -51,8 +51,20 @@ export function addNewHistory(newHistory) {
      * - store의 detailList 새로 갱신
      * - store.currentFunds 새로 갱신
      */
-    store.detailList = null;
-    store.currentFunds = null;
+    console.log('newHistory', newHistory);
+
+    //! store의 detailList 새로 갱신
+    if (store.detailList[store.todayId]) {
+      // 해당 날짜에 내역이 존재하는 경우
+      store.detailList[store.todayId] = store.detailList[todayId].push(newHistory);
+    } else {
+      // 해당 날에 첫 내역인 경우
+      store.detailList[store.todayId] = [newHistory];
+    }
+
+    //! store.currentFunds 새로 갱신
+    store.currentFunds -= newHistory.amount;
+    console.log(store);
 
     updateStorage();
     return true;
