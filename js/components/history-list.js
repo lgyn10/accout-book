@@ -45,16 +45,20 @@ export function renderHistoryList() {
       <p class="history-date">2021년 12월 1일</p>
     ${detail
       .map(({ description, category, amount, fundsAtTheTime, createAt }) => {
+        const fomattedTime = new Date(createAt).toLocaleTimeString('ko-kr', {
+          timeStyle: 'short',
+          hourCycle: 'h24',
+        });
         return `<section class='history-item'>
           <section class='history-item-column'>
-            <div class='create-at'>${createAt}</div>
+            <div class='create-at'>${fomattedTime}</div>
             <div class='history-detail'>
               <div class='history-detail-row history-detail-title'>
                 <p>${description}</p>
               </div>
               <div class='history-detail-row history-detail-subtitle'>
                 <p>${category}</p>
-                <p>${amount}<span>원</span></p>
+                <p>${amount.toLocaleString()}<span>원</span></p>
               </div>
             </div>
             <div class='delete-section'>
