@@ -41,6 +41,11 @@ export function renderHistoryList() {
       const detail = store.detailList[dateId];
       if (!detail?.length) return ''; // 가드 클로저 기법
 
+      // 오름차순 정렬
+      detail.sort((a, b) => {
+        return b.id - a.id;
+      });
+
       return `<article class="history-per-day">
       <p class="history-date">2021년 12월 1일</p>
     ${detail
