@@ -1,7 +1,7 @@
-import { renderCurrentAsset } from "../components/current-asset";
-import { store, removeHistory } from "../store";
+import { renderCurrentAsset } from '../components/current-asset';
+import { store, removeHistory } from '../store';
 
-const $sectionHistory = document.querySelector(".history");
+const $sectionHistory = document.querySelector('.history');
 
 export function initHistoryList() {
   renderHistoryList();
@@ -9,15 +9,15 @@ export function initHistoryList() {
 }
 
 function addHistoryListEventListener() {
-  $sectionHistory.addEventListener("click", function (event) {
+  $sectionHistory.addEventListener('click', function (event) {
     const element = event.target;
-    if (!element.className.includes("delete-button")) return;
+    if (!element.className.includes('delete-button')) return;
 
     const { dateid, itemid } = element.dataset;
 
     const isSuccess = removeHistory(dateid, itemid);
     if (!isSuccess) {
-      alert("소비내역 삭제에 실패했습니다.");
+      alert('소비내역 삭제에 실패했습니다.');
       return;
     }
 
@@ -39,7 +39,7 @@ export function renderHistoryList() {
   $sectionHistory.innerHTML = store.dateList
     .map(({ date, id: dateId }) => {
       const detail = store.detailList[dateId];
-      if (!detail?.length) return "";
+      if (!detail?.length) return '';
 
       return `<article class="history-per-day">
       <p class="history-date">2021년 12월 1일</p>
@@ -72,5 +72,5 @@ export function renderHistoryList() {
       </section>
     </article>`;
     })
-    .join("");
+    .join('');
 }

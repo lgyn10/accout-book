@@ -1,10 +1,11 @@
-import { store, updateStorage } from "../store";
-import { toHidden, toShow } from "../util";
+import { store, updateStorage } from '../store';
+import { toHidden, toShow } from '../util';
 
-const $currentAssetInput = document.querySelector(".current-asset-input");
-const $currentAssetValue = document.querySelector(".current-asset-value");
-const $currentAssetButton = document.querySelector(".current-asset-button");
-const $addItemButton = document.querySelector(".add-item-button");
+// html 요소의 경우 $로 명시한다.
+const $currentAssetInput = document.querySelector('.current-asset-input');
+const $currentAssetValue = document.querySelector('.current-asset-value');
+const $currentAssetButton = document.querySelector('.current-asset-button');
+const $addItemButton = document.querySelector('.add-item-button');
 
 export function initCurrentAsset() {
   renderCurrentAsset();
@@ -12,7 +13,7 @@ export function initCurrentAsset() {
 }
 
 function addCurrentAssetEventListener() {
-  $currentAssetValue.addEventListener("click", function (event) {
+  $currentAssetValue.addEventListener('click', function (event) {
     if (!store.isFirstEdit) return;
     toHidden(event.target);
     toShow($currentAssetInput);
@@ -21,7 +22,7 @@ function addCurrentAssetEventListener() {
     $currentAssetInput.focus();
   });
 
-  $currentAssetButton.addEventListener("click", function (event) {
+  $currentAssetButton.addEventListener('click', function (event) {
     toHidden(event.target);
     toHidden($currentAssetInput);
     toShow($currentAssetValue);
@@ -39,6 +40,6 @@ function addCurrentAssetEventListener() {
 export function renderCurrentAsset() {
   // TODO: 숫자에 콤마 작성
   // TODO: currentFunds가 없는 경우
-  $currentAssetValue.textContent = store.currentFunds ?? "-";
+  $currentAssetValue.textContent = store.currentFunds ?? '-';
   $currentAssetInput.value = store.currentFunds;
 }
